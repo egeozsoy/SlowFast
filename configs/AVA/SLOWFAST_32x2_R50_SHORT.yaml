@@ -14,16 +14,24 @@ DATA:
   TRAIN_CROP_SIZE: 224
   TEST_CROP_SIZE: 224
   INPUT_CHANNEL_NUM: [3, 3]
+  PATH_TO_DATA_DIR: data
 DETECTION:
   ENABLE: True
   ALIGNED: True
 AVA:
+  FRAME_DIR: data/ava/frames
+  FRAME_LIST_DIR: data/ava/frame_lists
+  ANNOTATION_DIR: data/ava/annotations
   DETECTION_SCORE_THRESH: 0.8
+  TRAIN_GT_BOX_LISTS: ["ava_train_v2.1.csv"]
   TRAIN_PREDICT_BOX_LISTS: [
-    "ava_train_v2.2.csv",
-    "person_box_67091280_iou90/ava_detection_train_boxes_and_labels_include_negative_v2.2.csv",
+    "ava_train_v2.1.csv",
+    "ava_train_predicted_boxes.csv",
   ]
-  TEST_PREDICT_BOX_LISTS: ["person_box_67091280_iou90/ava_detection_val_boxes_and_labels.csv"]
+  TEST_PREDICT_BOX_LISTS: ["ava_val_predicted_boxes.csv"]
+  LABEL_MAP_FILE: ava_action_list_v2.1_for_activitynet_2018.pbtxt
+  EXCLUSION_FILE: ava_train_excluded_timestamps_v2.1.csv
+  GROUNDTRUTH_FILE: "ava_val_v2.1.csv"
 SLOWFAST:
   ALPHA: 4
   BETA_INV: 8
